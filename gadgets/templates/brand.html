@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <title>Brand</title>
+</head>
+<body class="with-image">
+    {% block content %}
+    {% include 'includes/header.html' %}
+
+        {% for indiv in brand %}
+        <div class="container container_image dep_container"><br/><br/>
+            <div class="dep_box">
+                <div class="dep_image">
+                    <img class="resized_image" src="{{ indiv.brand_image.url }}" alt="">
+                </div>
+                <table>
+                    <tr>
+                        <th class="th_center">{{ indiv.name }}</th>
+                    </tr>
+                    <tr>
+                        <td>{{ indiv.description }}</td>
+                    </tr>         
+                </table>
+            </div>
+        </div>
+        {% endfor %}
+
+    {% include 'includes/footer.html' %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <title>Gadget Category</title>
+</head>
+<body>
+    {% block content %}
+    {% include 'includes/header.html' %}
+        <div class="container"><br/><br/>
+            <table>
+                <tr>
+                    <th>Brand</th>
+                    <th>Name</th>
+                    <th>Release Date</th>
+                    <th>Category</th>
+                </tr>
+                {% for gadget in gadgets %}
+                <tr>
+                    <td>{{ gadget.brand }}</td>
+                    <td>{{ gadget.name }}</td>
+                    <td>{{ gadget.release_date }}</td>
+                    <td>{{ gadget.category }}</td>
+                </tr>  
+                {% endfor %}            
+            </table>
+        </div>
+
+    {% include 'includes/footer.html' %}
+    {% endblock %}
+</body>
+</html>

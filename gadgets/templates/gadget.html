@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <title>gadget</title>
+</head>
+<body>
+    {% block content %}
+    {% include 'includes/header.html' %}
+        <div class="container"><br/><br/>
+            {% for indiv in gadget %}
+            <table>
+                <tr>
+                    <th>{{ indiv }}</th>
+                </tr>
+                <tr>
+                    <td>{{ indiv.description }}</td>
+                </tr>         
+            </table>
+            {% endfor %}  
+        </div>
+
+
+    {% include 'includes/footer.html' %}
+    {% endblock %}
+</body>
+</html>
+
