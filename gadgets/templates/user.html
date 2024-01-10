@@ -19,11 +19,26 @@
                     <th>{{ indiv }}</th>
                 </tr>
                 <tr>
-                    <td>{{ indiv.description }}</td>
+                    <td>{{ indiv.email }}</td>
                 </tr>         
             </table>
             {% endfor %}
         </div>
+
+        <br><br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            {% if user.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ user.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            <li class="page-item disabled"><a class="page-link">Page {{ user.number }} of {{ user.paginator.num_pages }}</a></li>
+            {% if user.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ user.next_page_number }}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ user.paginator.num_pages }}">Last &raquo</a></li>
+            {% endif %}
+            </ul>
+        </nav>
     
 
     {% include 'includes/footer.html' %}

@@ -33,7 +33,7 @@ class Gadget(BaseModel):
 
 class Specification(BaseModel):
     gadget = models.ForeignKey(Gadget, on_delete=models.CASCADE)
-    key = models.CharField(max_length=255)
+    key = models.TextField()
     value = models.CharField(max_length=255)
 
     def __str__(self):

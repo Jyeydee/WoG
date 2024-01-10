@@ -7,38 +7,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <title>Gadgets</title>
+    <title>Category</title>
 </head>
-<body class="with-image">
+<body>
     {% block content %}
     {% include 'includes/header.html' %}
-
-        {% for indiv in gadget %}
-        {% for gadget in indiv.gadget.all %}
-        <div class="container container_image"><br/><br/>
-            <div class="dep_box">
-                <div class="dep_image">
-                    <img class="resized_image" src="{{ indiv.gadget_image.url }}" alt="">
-                </div>
-                <table>
-                    <tr>
-                        <th class="th_center">{{ indiv.name }}</th>
-                    </tr>
-                    <tr>
-                        <td>Description: {{ indiv.description }}</td>
-                    </tr>
-                    <tr>
-                        <td>Released date: {{ indiv.start_date }}</td>
-                    </tr>
-    
-                </table>
-            </div>
+        <div class="container"><br/><br/>
+            {% for indiv in category %}
+            <table>
+                <tr>
+                    <th>{{ indiv }}</th>
+                </tr>        
+            </table>
+            {% endfor %}  
         </div>
-        {% endfor %}
-        {% endfor %}
+
+        <br><br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            {% if category.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ category.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            <li class="page-item disabled"><a class="page-link">Page {{ category.number }} of {{ category.paginator.num_pages }}</a></li>
+            {% if category.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ category.next_page_number }}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ category.paginator.num_pages }}">Last &raquo</a></li>
+            {% endif %}
+            </ul>
+        </nav>
 
 
     {% include 'includes/footer.html' %}
     {% endblock %}
 </body>
 </html>
+

@@ -7,13 +7,21 @@
 
 body {
     /* background-color: #d3d3d3; */
-    background-image: url('../images/background.jpg');
+    background-image: url('../images/bg.jpg');
     background-size: cover; /* This property ensures the image covers the entire body */
     background-position: center;
     background-attachment: fixed; /* Set the background position as fixed */
     height: 100%;
     margin: 0;
     padding: 0;
+}
+.Gadgets_nav {
+    text-align: center;
+}
+
+.Gadgets_nav a {
+    text-decoration: none;
+    color: rgb(16, 223, 255);
 }
 
 main {
@@ -31,7 +39,7 @@ main {
 footer {
     background-color: rgb(255, 255, 255);
     color: black;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -142,6 +150,7 @@ tr:hover {
 
 h1 {
     color: white;
+    text-align: center;
 }
 
 p {
@@ -169,3 +178,4 @@ p {
 .th_center {
     text-align: center;
 }
+

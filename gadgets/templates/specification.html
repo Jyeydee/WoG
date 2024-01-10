@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
-    <title>Gadget Category</title>
+    <title>Gadget Specification</title>
 </head>
 <body>
     {% block content %}
@@ -15,21 +15,34 @@
         <div class="container"><br/><br/>
             <table>
                 <tr>
-                    <th>Brand</th>
-                    <th>Name</th>
-                    <th>Release Date</th>
-                    <th>Category</th>
+                    <th>Gadget</th>
+                    <th>Key</th>
+                    <th>Value</th>
                 </tr>
-                {% for gadget in gadgets %}
+                {% for indiv in specification %}
                 <tr>
-                    <td>{{ gadget.brand }}</td>
-                    <td>{{ gadget.name }}</td>
-                    <td>{{ gadget.release_date }}</td>
-                    <td>{{ gadget.category }}</td>
+                    <td>{{ indiv.gadget }}</td>
+                    <td>{{ indiv.key }}</td>
+                    <td>{{ indiv.value }}</td>
                 </tr>  
                 {% endfor %}            
             </table>
         </div>
+
+        <br><br>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            {% if specification.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page=1">&laquo First</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ specification.previous_page_number }}">Previous</a></li>
+            {% endif %}
+            <li class="page-item disabled"><a class="page-link">Page {{ specification.number }} of {{ specification.paginator.num_pages }}</a></li>
+            {% if specification.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ specification.next_page_number }}">Next</a></li>
+            <li class="page-item"><a class="page-link" href="?page={{ specification.paginator.num_pages }}">Last &raquo</a></li>
+            {% endif %}
+            </ul>
+        </nav>
 
     {% include 'includes/footer.html' %}
     {% endblock %}
